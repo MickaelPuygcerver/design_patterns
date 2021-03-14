@@ -15,18 +15,6 @@ namespace DesignPatterns.Creational.Abstract_Factory
         public decimal Ammount { get; set; }
     }
 
-    // Concrete Product
-    public class TransactionPix : Transaction
-    {
-        public TransactionPix(decimal ammount, TransactionType transactionType) : base(ammount, transactionType) { }
-    }
-
-    // Concrete Product
-    public class TransactionTed : Transaction
-    {
-        public TransactionTed(decimal ammount, TransactionType transactionType) : base(ammount, transactionType) { }
-    }
-
     public static class TransactionCreator
     {
         public static Transaction Create(decimal ammount, TransactionType transactionType)
@@ -36,7 +24,7 @@ namespace DesignPatterns.Creational.Abstract_Factory
                 case TransactionType.Pix:
                     return new TransactionPix(ammount, transactionType);
                 case TransactionType.Ted:
-                    return new TransactionPix(ammount, transactionType);
+                    return new TransactionTed(ammount, transactionType);
                 default:
                     throw new ApplicationException("Invalid transaction type.");
             }

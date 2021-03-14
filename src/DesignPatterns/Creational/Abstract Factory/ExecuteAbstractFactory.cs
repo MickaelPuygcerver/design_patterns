@@ -8,13 +8,11 @@ namespace DesignPatterns.Creational.Abstract_Factory
     {
         public static void Execute()
         {
-            var transactions = new List<Transaction>()
-            {
-                TransactionCreator.Create(5.50m, TransactionType.Pix),
-                TransactionCreator.Create(2.20m, TransactionType.Ted)
-            };
+            var pixTransaction = TransactionCreator.Create(5.50m, TransactionType.Pix);
+            var tedTransaction = TransactionCreator.Create(2.20m, TransactionType.Ted);
 
-            transactions.ForEach(transfer => Transfer.CreateTransfer(transfer).DoTransfer());
+            Transfer.CreateTransfer(pixTransaction).DoTransfer();
+            Transfer.CreateTransfer(tedTransaction).DoTransfer();
         }
     }
 }
